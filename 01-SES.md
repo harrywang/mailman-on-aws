@@ -43,7 +43,7 @@ In this pane, you can see some setting, for example,
 
 By default, messages that you send through Amazon SES use amazonses.com (or a subdomain of that) as the MAIL FROM domain. Sender Policy Framework (SPF) authentication successfully validates these messages because the default MAIL FROM domain matches the sending mail server. It is enough for most users. But if you want to set it as your domain, follow the step.
 
-Open https://console.aws.amazon.com/ses/home?region=us-east-1#verified-sender-details:domain:[Domain Verified Before]
+Open https://console.aws.amazon.com/ses/home?region=us-east-1#verified-sender-details:domain:\[Domain Verified Before\]
 
 Replace [Domain Verified Before] with your domain. Scroll down, expand **MAIL FROM Domain**.
 

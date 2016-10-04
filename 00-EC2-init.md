@@ -97,9 +97,7 @@ Click the text bot of Instance, choose the EC2 VM we created before. Then **Asso
 
 ## Connect to instance
 
-https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#Instances
-
-Click **Connect** to get instructions.
+Follow the [instruction](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) to connect to the instance.
 
 ### Init the system
 
@@ -112,12 +110,14 @@ Type the following commands, line by line.
 To set the hostname, 
 - Edit /etc/hostname , make the name change, save the file.
     
-    sudo echo "[hostname]" > /etc/hostname
+    `sudo echo *yourdomain* > /etc/hostname`
+
+    Note: If the hostname file is immutable run `sudo -i` first.
 
 - You should also make the same changes in /etc/hosts file.
-- Run sudo /etc/init.d/hostname restart or sudo service hostname restart.
+- Run `sudo /etc/init.d/hostname restart` or `sudo service hostname restart`.
 
-In this example [hostname] has been set to mail-aws-test.xiaoxing.us
+In this example *yourdomain* has been set to mail-aws-test.xiaoxing.us
 
 Reboot to let the system up-to-date:
 
