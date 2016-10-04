@@ -110,7 +110,7 @@ Type the following commands, line by line.
 To set the hostname, 
 - Edit /etc/hostname , make the name change, save the file.
     
-    `sudo echo *yourdomain* > /etc/hostname`
+    `sudo echo \*yourdomain\* > /etc/hostname`
 
     Note: If the hostname file is immutable run `sudo -i` first.
 
