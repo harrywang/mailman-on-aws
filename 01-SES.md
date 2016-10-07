@@ -12,7 +12,7 @@ Open the link: https://console.aws.amazon.com/ses/home?region=us-east-1
 
 ## Verify a domain
 
-Open Identity Management - [Domains](https://console.aws.amazon.com/ses/home?region=us-east-1#verified-senders-domain:),
+Open Identity Management - [Domains](https://console.aws.amazon.com/ses/home?region=us-east-1#verified-senders-domain:)
 
 The domain we will used in the example is **mail-aws-test.xiaoxing.us**.
 
@@ -61,13 +61,17 @@ Run the following commands line by line:
     sudo apt-get install postfix
     # Note: choose "Internet site" if prompted.
 
-After you have installed postfix, use the editor you like, such as nano, vim or emacs, to edit **/etc/postfix/main.cf** file. For example here, we use nano.
+After you have installed postfix(An open-source Mail Transfer Agent), use the editor you like, such as nano, vim or emacs, to edit **/etc/postfix/main.cf** file. For example here, we use nano.
 
     sudo nano /etc/postfix/main.cf 
 
-Add the following lines, please be noted that if you are not using US-East-1 (**US East (N. Virginia)**) region, you will need to replace [email-smtp.us-east-1.amazonaws.com] with the smtp server you use.
+Update myhostname
 
-    relayhost = [email-smtp.us-east-1.amazonaws.com]:465
+    myhostname = yourdomain.com
+
+Add the following lines, please be noted that if you are not using US-East-1 (**US East (N. Virginia)**) region, you will need to replace **email-smtp.us-east-1.amazonaws.com** with the smtp server you use.
+
+    relayhost = [email-smtp.us-east-1.amazonaws.com]:25
     smtp_sasl_auth_enable = yes
     smtp_sasl_security_options = noanonymous
     smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
@@ -77,14 +81,13 @@ Add the following lines, please be noted that if you are not using US-East-1 (**
 
 Save and close it.
 
-    sudo nano /etc/postfix/master.cf
-    
-    # add them:
-    
+
+<!-- Update `/etc/postfix/master.cf`
+
     relay-smtps  unix  -       -       n       -       -       smtp
     # Client-side SMTPS requires "encrypt" or stronger.
         -o smtp_tls_security_level=encrypt
-        -o smtp_tls_wrappermode=yes
+        -o smtp_tls_wrappermode=yes -->
 
 Run 
 
@@ -92,8 +95,7 @@ Run
     
 Edit or create **/etc/postfix/sasl_passwd** file. Add the following line to the file, replacing USERNAME and PASSWORD with your SMTP user name and password.
 
-    [email-smtp.us-east-1.amazonaws.com]:465 USERNAME:PASSWORD
-    ses-smtp-prod-335357831.us-east-1.elb.amazonaws.com:465 USERNAME:PASSWORD
+    email-smtp.us-east-1.amazonaws.com:25 USERNAME:PASSWORD
 
 Run
 
