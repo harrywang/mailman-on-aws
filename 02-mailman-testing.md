@@ -37,8 +37,7 @@ Setup a virtualenv for the Mailman suite and activate it with the following comm
     
 In the bundler directory, open the mailman_web/testing.py file, look for the SECRET_KEY parameter and set something random.
     
-    nano mailman-bundler/mailman_web/testing.py
-    # SECRET_KEY = '[SET IT TO SOMETHING RANDOM]'
+    SECRET_KEY = '[SET IT TO SOMETHING RANDOM]'
 
 Go into mailman-bundler folder, install and run buildout:
 
@@ -54,10 +53,10 @@ Now create an initial superuser to login as, this is the user you'll use to logi
   
     ./bin/mailman-web-django-admin createsuperuser
 
-Install falcon 0.3.0
+Install falcon 0.3. Note: [Postorius error if you don't update falcon](https://gitlab.com/mailman/postorius/issues/122)
 
     source /opt/mailman/mailman-bundler/venv-3.4/bin/activate
-    pip install --upgrade falcon==0.3.0
+    pip install --upgrade falcon==0.3
 
 ## Configure Postfix
 
@@ -89,7 +88,7 @@ Copy them. Then paste it to the postfix config file:
     
 Make sure postfix has read access to the *.db files in var/data (it won't have access by default). You can change the permissions of those files to world-readable:
     
-    sudo chmod 777 mailman-bundler/var/data/
+    sudo chmod 777 /opt/mailman/mailman-bundler/var/data/
 
 ## Start your test server
 
