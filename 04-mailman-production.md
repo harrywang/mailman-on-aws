@@ -143,7 +143,7 @@ You need to run as root or use sudo. So go back to default user. Run:
     exit
     sudo nano /etc/rc.local
 
-Add the following lines before exit:
+Add the following lines before exit 0:
 
     su -c "/opt/mailman/mailman-bundler/bin/mailman start &" mailman
     su -c "/opt/mailman/mailman-bundler/bin/gunicorn -c /opt/mailman/mailman-bundler/deployment/gunicorn.conf mailman_web.wsgi:application &" mailman
