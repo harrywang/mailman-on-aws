@@ -53,7 +53,7 @@ Then, you should publish the DNS records as required in the pop up window.
 
 For more information, please click http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html -->
 
-## Configure Postfix in EC2
+## Configure Postfix in EC2 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
 
 Run the following commands line by line:
 
@@ -64,10 +64,6 @@ Run the following commands line by line:
 After you have installed postfix(An open-source Mail Transfer Agent), use the editor you like, such as nano, vim or emacs, to edit **/etc/postfix/main.cf** file. For example here, we use nano.
 
     sudo nano /etc/postfix/main.cf 
-
-Update myhostname
-
-    myhostname = yourdomain.com
 
 Add the following lines, please be noted that if you are not using US-East-1 (**US East (N. Virginia)**) region, you will need to replace **email-smtp.us-east-1.amazonaws.com** with the smtp server you use.
 
@@ -89,9 +85,13 @@ Save and close it.
         -o smtp_tls_security_level=encrypt
         -o smtp_tls_wrappermode=yes -->
 
-Run 
+Comment out the following line of the master.cf file by putting a # in front of it: `-o smtp_fallback_relay=`
 
-    /etc/init.d/postfix reload
+Save and close the master.cf file.
+
+<!-- Run 
+
+    sudo /etc/init.d/postfix reload -->
     
 Edit or create **/etc/postfix/sasl_passwd** file. Add the following line to the file, replacing USERNAME and PASSWORD with your SMTP user name and password.
 
@@ -132,6 +132,8 @@ Send a test email by typing the following at a command line, pressing Enter afte
     This email was sent through Amazon SES!
 
     .
+
+Check your inbox for the email. If the message was not delivered, check your Junk box, and then check your system's mail log (typically `/var/log/maillog`) for errors.
 
 ## Request a Sending Limit Increase
 
