@@ -53,7 +53,7 @@ Then, you should publish the DNS records as required in the pop up window.
 
 For more information, please click http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html -->
 
-## Configure Postfix in EC2 (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
+## Configure Postfix in EC2 [Reference](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
 
 Run the following commands line by line:
 
