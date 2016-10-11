@@ -117,8 +117,8 @@ Run:
 
     sudo su mailman
     source venv/bin/activate
-    cd mailman_bundler
-    bin/mailman-post-update
+    cd mailman-bundler
+    ./bin/mailman-post-update
 
 ## Running web interface on Gunicorn
 

@@ -98,6 +98,7 @@ Change back to mailman user:
 
 Start mailman:
 
+    cd mailman-bundler/
     ./bin/mailman start
 
 Run Django (the web interfaces server):
