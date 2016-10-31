@@ -83,7 +83,7 @@ Add the following lines:
             'USER': '[DB USERNAME]',  # Example, change as needed
             'PASSWORD': '[DB PASSWORD]',  # Example, obviously
             'HOST': '[ENDPOINT without port (:5432)]',
-            'PORT': '5423',            # Set to empty string for default.
+            'PORT': '5432',            # Set to empty string for default.
         }
     }
     USE_SSL = False
