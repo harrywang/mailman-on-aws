@@ -59,7 +59,7 @@ Run the following commands line by line:
 
     sudo apt-get remove sendmail
     sudo apt-get install postfix
-    # Note: choose "Internet site" if prompted.
+    # Note: choose "Internet site" if prompted. and enter the verified domain
 
 After you have installed postfix(An open-source Mail Transfer Agent), use the editor you like, such as nano, vim or emacs, to edit **/etc/postfix/main.cf** file. For example here, we use nano.
 
@@ -74,6 +74,8 @@ Add the following lines, please be noted that if you are not using US-East-1 (**
     smtp_use_tls = yes
     smtp_tls_security_level = encrypt
     smtp_tls_note_starttls_offer = yes
+    
+Then remove the verified domain in `mydestination`
 
 Save and close it.
 
@@ -95,7 +97,7 @@ Save and close the master.cf file.
     
 Edit or create **/etc/postfix/sasl_passwd** file. Add the following line to the file, replacing USERNAME and PASSWORD with your SMTP user name and password.
 
-    email-smtp.us-east-1.amazonaws.com:25 USERNAME:PASSWORD
+    [email-smtp.us-east-1.amazonaws.com]:25 USERNAME:PASSWORD
 
 Run
 
