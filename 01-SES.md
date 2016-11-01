@@ -135,7 +135,7 @@ Send a test email by typing the following at a command line, pressing Enter afte
 
     .
 
-Check your inbox for the email. If the message was not delivered, check your Junk box, and then check your system's mail log (typically `/var/log/maillog`) for errors.
+Check your inbox for the email. If the message was not delivered, check your Junk box, and then check your system's mail log (typically in `/var/log/` folder) for errors.
 
 ## Request a Sending Limit Increase
 
