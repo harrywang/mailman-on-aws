@@ -75,7 +75,7 @@ Add the following lines, please be noted that if you are not using US-East-1 (**
     smtp_tls_security_level = encrypt
     smtp_tls_note_starttls_offer = yes
     
-Then remove the verified domain in `mydestination`
+Then remove the verified domain and $myhostname in `mydestination`
 
 Save and close it.
 
