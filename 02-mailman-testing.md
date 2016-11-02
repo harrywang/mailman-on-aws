@@ -45,6 +45,7 @@ Go into mailman-bundler folder, install and run buildout:
     pip install zc.buildout
     buildout
 
+[If you need to install python 3.4 manually](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
 Now initialize Django's database:
 
     ./bin/mailman-post-update
