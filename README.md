@@ -4,6 +4,7 @@ Way to deploy Mailman 3 on AWS (SES and EC2)
 Reference:
 * [Integrating Amazon SES with Postfix] (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
 * [Mailman bundler - GNU Mailman, Postorius and HyperKitty](https://gitlab.com/mailman/mailman-bundler)
+* [Mailman installation for production](https://wiki.list.org/DOC/Mailman%203%20installation%20experience)
 
 List of article:
 - [Initialize EC2 Virtual Machine](00-EC2-init.md)
