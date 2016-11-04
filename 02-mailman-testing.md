@@ -19,9 +19,28 @@ Prepare an empty folder for mailman:
     sudo mkdir /opt/mailman
     cd /opt/mailman
     
+Install Mailman, HyperKitty, Postorius, MailmanClient, HyperKitty - Mailman plugin, django-mailman3 separately.
+
+    sudo mkdir git
+    cd git
+    sudo git clone https://gitlab.com/alex1007/mailman.git
+    sudo git clone https://gitlab.com/alex1007/hyperkitty.git
+    sudo git clone https://gitlab.com/alex1007/postorius.git
+    sudo git clone https://gitlab.com/alex1007/mailmanclient.git
+    sudo git clone https://gitlab.com/alex1007/django-mailman3.git
+    sudo git clone https://gitlab.com/alex1007/mailman-hyperkitty.git
+    
+Enter each repo to install the package
+
+    cd XXX/
+    python3.4 setup.py develop # for mailman, mailman-hyperkitty
+    python setup.py develop # for hyperkitty, postorius, mailmanclient, django-mailman3
+    
+If you need to install python3.4, go check [Building Python 3.4 from source](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
+    
 Clone [Mailman Bundler](https://gitlab.com/mailman/mailman-bundler):
     
-    sudo git clone https://gitlab.com/mailman/mailman-bundler.git
+    sudo git clone https://gitlab.com/alex1007/mailman-bundler.git
 
 Now switch to a dedicated Mailman user.
 
@@ -30,10 +49,7 @@ Now switch to a dedicated Mailman user.
     sudo chown mailman ./ -R
     sudo su mailman
 
-Setup a virtualenv for the Mailman suite and activate it with the following commands:
-
-    virtualenv venv
-    source venv/bin/activate
+We choose not to install virtual environment.
     
 In the bundler directory, open the mailman_web/testing.py file, look for the SECRET_KEY parameter and set something random.
     
@@ -44,8 +60,8 @@ Go into mailman-bundler folder, install and run buildout:
     cd mailman-bundler
     pip install zc.buildout
     buildout
-
-[If you need to install python 3.4 manually](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
+    
+Edit every script in `/mailman-bundler/bin/`. Remove `/opt/mailman/mailman-bundler/eggs/Django-1.8.16-py2.7.egg` and `/opt/mailman/mailman-bundler/eggs/postorius-1.0.3-py2.7.egg` in the path. Update path of mailman in `mailman` script(you probably can find your excutable mailman in `/usr/local/bin/`).
 
 Now initialize Django's database:
 
@@ -55,7 +71,7 @@ Now create an initial superuser to login as, this is the user you'll use to logi
   
     ./bin/mailman-web-django-admin createsuperuser
 
-Install falcon 0.3. Note: [Postorius error if you don't update falcon](https://gitlab.com/mailman/postorius/issues/122)
+Install falcon 0.3 if version of your current package is < 0.3 Note: [Postorius error if you don't update falcon](https://gitlab.com/mailman/postorius/issues/122)
 
     source /opt/mailman/mailman-bundler/venv-3.4/bin/activate
     pip install --upgrade falcon==0.3
