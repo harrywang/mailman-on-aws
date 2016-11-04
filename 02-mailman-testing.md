@@ -77,6 +77,92 @@ Install falcon 0.3 if version of your current package is < 0.3 Note: [Postorius 
 
     source /opt/mailman/mailman-bundler/venv-3.4/bin/activate
     pip install --upgrade falcon==0.3
+    
+## Update configuration files
+    
+update `mailman-bundler/mailman_web/urls.py`.
+```
+# mailman-bundler/mailman_web/urls.py
+
+# Changes are converting url patterns to a list for Django 1.9 and
+# removing '{"SSL": True\} from a couple of URLs as it caused problems.
+
+from django.conf.urls import include, url
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView
+
+# Comment the next two lines to disable the admin:
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = [url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
+               url(r'^mailman3/', include('postorius.urls')),
+               url(r'^archives/', include('hyperkitty.urls')),
+               url(r'', include('social.apps.django_app.urls', namespace='social')),
+               url(r'', include('django_browserid.urls')),
+              ]
+```
+
+update `mailman-bundler/deployment/mailman.cfg`
+```
+# mailman-bundler/deployment/mailman.cfg 
+
+# changes are site_owner, [database] and [shell]
+
+# This is the absolute bare minimum base configuration file.  User supplied
+# configurations are pushed onto this.
+
+[mailman]
+# This address is the "site owner" address.  Certain messages which must be
+# delivered to a human, but which can't be delivered to a list owner (e.g. a
+# bounce from a list owner), will be sent to this address.  It should point to
+# a human.
+site_owner: mailman@mailman3.org
+layout: here
+
+[paths.here]
+# Everything in the same directory
+var_dir: /opt/mailman/mailman-bundler/var
+
+[database]
+class: mailman.database.postgresql.PostgreSQLDatabase
+#url: postgres://mailman:mailman-db-password@localhost/mailman
+url: postgres://mailman:db_passwd@localhost/mailmanweb
+
+[archiver.hyperkitty]
+class: mailman_hyperkitty.Archiver
+enable: yes
+configuration: /opt/mailman/mailman-bundler/deployment/mailman-hyperkitty.cfg
+
+[archiver.prototype]
+enable: yes
+
+[shell]
+history_file: $var_dir/history.py
+
+#[logging.database]
+#level: debug
+```
+
+update `mailman-bundler/deployment/mailman-hyperkitty.cfg`
+```
+# mailman-bundler/deployment/mailman-hyperkitty.cfg
+
+# changes are base_url and api_key
+
+# This is the mailman extension configuration file to enable HyperKitty as an
+# archiver. Remember to add the following lines in the mailman.cfg file:
+#
+# [archiver.hyperkitty]
+# class: mailman_hyperkitty.Archiver
+# enable: yes
+# configuration: /path/to/here/hyperkitty.cfg
+#
+
+[general]
+base_url: https://lists.mailman3.org/archives
+api_key: arch_secret
+```
 
 ## Configure Postfix
 
