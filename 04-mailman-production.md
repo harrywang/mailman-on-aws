@@ -469,8 +469,8 @@ try:
     from settings_local import *
 except ImportError:
     pass
-```    
-    https://docs.djangoproject.com/en/1.9/ref/settings/
+```   
+https://docs.djangoproject.com/en/1.9/ref/settings/
 
 ## Set Database
 
