@@ -34,6 +34,8 @@ Enter each repo to install the package
 
     cd XXX/
     python3.4 setup.py develop # for mailman, mailman-hyperkitty
+or
+
     python setup.py develop # for hyperkitty, postorius, mailmanclient, django-mailman3
     
 If you need to install python3.4, go check [Building Python 3.4 from source](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
