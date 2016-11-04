@@ -79,6 +79,8 @@ Install falcon 0.3 if version of your current package is < 0.3 Note: [Postorius 
     pip install --upgrade falcon==0.3
     
 ## Update configuration files
+
+Please read the comment in the files. Make sure change default settings.
     
 update `mailman-bundler/mailman_web/urls.py`.
 ```
