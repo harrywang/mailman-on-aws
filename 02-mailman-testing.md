@@ -6,7 +6,7 @@ Reference: https://gitlab.com/mailman/mailman-bundler
 
 For Ubuntu or Debian users, run
 
-    sudo apt-get install ruby-sass python python3 python-pip python3-pip git python-virtualenv libpq-dev python-dev python3-dev gcc
+    sudo apt-get install ruby-sass python python3 python-pip python3-pip git python-virtualenv libpq-dev python-dev python3-dev gcc lynx
     
 Centos:
 
