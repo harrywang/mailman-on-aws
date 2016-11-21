@@ -139,7 +139,9 @@ Check your inbox for the email. If the message was not delivered, check your Jun
 
 ## Request a Sending Limit Increase
 
-Your Amazon SES account has "sandbox" access in region US East (N. Virginia). With sandbox access you can only send email to the Amazon SES mailbox simulator and to email addresses or domains that you have verified. To be moved out of the sandbox, please request a sending limit increase. 
+Your Amazon SES account has "sandbox" access in region US East (N. Virginia). With sandbox access you can only send email to the Amazon SES mailbox simulator. Email addresses or domains that you have verified are not allowed to send out emails through SES. To be moved out of the sandbox, please request a sending limit increase.
+
+[Follow instruction here](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html)
 
 ## Have Problems?
 
