@@ -3,10 +3,15 @@ Way to deploy Mailman 3 on AWS (SES and EC2)
 
 List of steps:
 1. [Initialize EC2 Virtual Machine](00-EC2-init.md)
+
 2. [Set Up SES, Simple Email Service](01-SES.md)
+
 3. [Set up a testing Mailman](02-mailman-testing.md)
+
 4. [Set Up RDS, Relational Database Service](03-rds.md)
+
 5. [Put Mailman into Production](04-mailman-production.md)
+
 6. [Use Nginx to proxy Mailman](05-nginx-proxy.md)
 
 References:
