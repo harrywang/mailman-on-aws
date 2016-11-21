@@ -2,6 +2,7 @@
 Way to deploy Mailman 3 on AWS (SES and EC2)
 
 List of steps:
+
 1. [Initialize EC2 Virtual Machine](00-EC2-init.md)
 
 2. [Set Up SES, Simple Email Service](01-SES.md)
