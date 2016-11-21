@@ -12,4 +12,4 @@ List of article:
 - [Set up a testing Mailman](02-mailman-testing.md)
 - [Set Up RDS, Relational Database Service](03-rds.md)
 - [Put Mailman into Production](04-mailman-production.md)
-- [Use Nginx to proxy Mailma](05-nginx-proxy.md)
+- [Use Nginx to proxy Mailman](05-nginx-proxy.md)
