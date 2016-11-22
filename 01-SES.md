@@ -63,7 +63,7 @@ Run the following commands line by line:
 
 After you have installed postfix(An open-source Mail Transfer Agent), use the editor you like, such as nano, vim or emacs, to edit **/etc/postfix/main.cf** file. For example here, we use nano.
 
-    sudo nano /etc/postfix/main.cf 
+    sudo vim /etc/postfix/main.cf 
 
 Add the following lines, please be noted that if you are not using US-East-1 (**US East (N. Virginia)**) region, you will need to replace **email-smtp.us-east-1.amazonaws.com** with the smtp server you use.
 
