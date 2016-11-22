@@ -60,6 +60,14 @@ In the bundler directory, open the mailman_web/testing.py file, look for the SEC
     
     SECRET_KEY = '[SET IT TO SOMETHING RANDOM]'
 
+Edit `/buildout.cfg`:
+
+    [mailman-web]
+    recipe = djangorecipe
+    project = mailman_web
+    eggs =
+        Django < 1.10
+        
 Go into mailman-bundler folder, install and run buildout:
 
     cd mailman-bundler
