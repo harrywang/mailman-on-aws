@@ -87,7 +87,7 @@ Save and close it.
         -o smtp_tls_security_level=encrypt
         -o smtp_tls_wrappermode=yes -->
 
-Comment out the following line of the master.cf file by putting a # in front of it: `-o smtp_fallback_relay=`
+Comment out the following line of the master.cf file by inserting a # in front of it: `-o smtp_fallback_relay=`
 
 Save and close the master.cf file.
 
