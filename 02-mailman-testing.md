@@ -191,7 +191,7 @@ The return should look like
 
 Copy them. Then paste it to the postfix config file:
 
-    sudo nano /etc/postfix/main.cf
+    sudo vim /etc/postfix/main.cf
     sudo postfix reload
     
 Make sure postfix has read access to the *.db files in var/data (it won't have access by default). You can change the permissions of those files to world-readable:
