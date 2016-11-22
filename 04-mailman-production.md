@@ -41,6 +41,7 @@ Also, update mailman and mailman-hyperkitty in virtual environment
      source /opt/mailman/mailman-bundler/venv-3.4/bin/activate
      pip3 install --upgrade -e /opt/mailman/git/mailman-hyperkitty/
      pip3 install --upgrade -e /opt/mailman/git/mailman/
+     pip3 install psycopg2
 
 In the bundler directory, open the mailman_web/production.py file, look for the SECRET_KEY parameter and set something random.
 
