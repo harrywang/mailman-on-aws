@@ -69,6 +69,16 @@ Edit `/buildout.cfg`:
     eggs =
         Django < 1.10
         
+    [mailman]
+    recipe = collective.recipe.cmd
+    python3-version = 3.4
+    on_install = true
+    venv-dir = ${buildout:directory}/venv-${mailman:python3-version}
+    cmds =
+        virtualenv -p python${mailman:python3-version} ${mailman:venv-dir}
+        ${mailman:venv-dir}/bin/pip install -e /opt/mailman/git/mailman-hyperkitty
+        ${mailman:venv-dir}/bin/pip install -e /opt/mailman/git/mailman
+        
 Go into mailman-bundler folder, install and run buildout:
 
     cd mailman-bundler
