@@ -23,7 +23,7 @@ Then, change back to mailman user and activate the virtual environment.
 Install PostgreSQL library of python
 
     pip install psycopg2
-    pip install psycopg2
+    pip3 install psycopg2
     
 ## Change status to production
 
