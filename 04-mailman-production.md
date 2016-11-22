@@ -29,7 +29,7 @@ Install PostgreSQL library of python
 
 For a production setup, you first need to change the deployment parameter to production in buildout.cfg and run buildout again. It will regenerate the scripts in bin and the contents of the deployment directory. Run
 
-    nano mailman-bundler/buildout.cfg
+    vim mailman-bundler/buildout.cfg
     # Replace "deployment = testing" with "deployment = production"
     cd mailman-bundler
     buildout
