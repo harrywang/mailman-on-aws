@@ -38,6 +38,9 @@ or
 
     sudo python setup.py develop # for hyperkitty, postorius, mailmanclient, django-mailman3
     
+    sudo pip3 install -e /opt/mailman/git/mailman-hyperkitty
+    sudo pip install -e /opt/mailman/git/postorius
+    
 If you need to install python3.4, go check [Building Python 3.4 from source](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
     
 Clone [Mailman Bundler](https://gitlab.com/mailman/mailman-bundler):
