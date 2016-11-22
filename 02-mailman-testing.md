@@ -23,12 +23,12 @@ Install Mailman, HyperKitty, Postorius, MailmanClient, HyperKitty - Mailman plug
 
     sudo mkdir git
     cd git
-    sudo git clone https://github.com/aisworld/mailman.git
-    sudo git clone https://github.com/aisworld/hyperkitty.git
-    sudo git clone https://github.com/aisworld/postorius.git
-    sudo git clone https://github.com/aisworld/mailmanclient.git
-    sudo git clone https://github.com/aisworld/django-mailman3.git
-    sudo git clone https://github.com/aisworld/mailman-hyperkitty.git
+    sudo git clone https://gitlab.com/alex1007/mailman.git
+    sudo git clone https://gitlab.com/alex1007/hyperkitty.git
+    sudo git clone https://gitlab.com/alex1007/postorius.git
+    sudo git clone https://gitlab.com/alex1007/mailmanclient.git
+    sudo git clone https://gitlab.com/alex1007/django-mailman3.git
+    sudo git clone https://gitlab.com/alex1007/mailman-hyperkitty.git
     
 Enter each repo to install the package
 
@@ -42,7 +42,7 @@ If you need to install python3.4, go check [Building Python 3.4 from source](htt
     
 Clone [Mailman Bundler](https://gitlab.com/mailman/mailman-bundler):
     
-    sudo git clone https://github.com/aisworld/mailman-bundler.git
+    sudo git clone https://gitlab.com/alex1007/mailman-bundler.git
 
 Now switch to a dedicated Mailman user.
 
