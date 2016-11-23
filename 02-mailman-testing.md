@@ -17,7 +17,7 @@ Install python3.4, go check [Building Python 3.4 from source](http://devmartin.c
 
 ## Setting up for testing first
 
------------------
+!!!!!!!!!!!!
 
 Prepare an empty folder for mailman:
 
@@ -46,7 +46,7 @@ or
     sudo pip3 install -e /opt/mailman/git/mailman-hyperkitty
     sudo pip install -e /opt/mailman/git/postorius
     
------------------
+!!!!!!!!!!!!
 
     
 Clone [Mailman Bundler](https://gitlab.com/mailman/mailman-bundler):
@@ -66,6 +66,8 @@ In the bundler directory, open the mailman_web/testing.py file, look for the SEC
     
     SECRET_KEY = '[SET IT TO SOMETHING RANDOM]'
 
+!!!!!!!!
+
 Edit `/buildout.cfg`:
 
     [mailman-web]
@@ -84,13 +86,19 @@ Edit `/buildout.cfg`:
         ${mailman:venv-dir}/bin/pip install -e /opt/mailman/git/mailman-hyperkitty
         ${mailman:venv-dir}/bin/pip install -e /opt/mailman/git/mailman
         
+!!!!!!!!
+        
 Go into mailman-bundler folder, install and run buildout:
 
     cd mailman-bundler
     pip install zc.buildout
     buildout
     
+!!!!!!!!
+    
 Edit every script in `/mailman-bundler/bin/`. Remove `/opt/mailman/mailman-bundler/eggs/Django-1.8.16-py2.7.egg` and `/opt/mailman/mailman-bundler/eggs/postorius-1.0.3-py2.7.egg` in the path. Update path of mailman in `mailman` script(you probably can find your excutable mailman in `/usr/local/bin/`).
+
+!!!!!!!!
 
 Now initialize Django's database:
 
