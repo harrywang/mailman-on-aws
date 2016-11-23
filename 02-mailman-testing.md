@@ -12,8 +12,12 @@ For Ubuntu or Debian users, run
 Centos:
 
     sudo yum install rubygem-sass python python3 python-pip python3-pip git python-virtualenv python-devel python3-devel gcc
+    
+Install python3.4, go check [Building Python 3.4 from source](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
 
 ## Setting up for testing first
+
+-----------------
 
 Prepare an empty folder for mailman:
 
@@ -42,7 +46,8 @@ or
     sudo pip3 install -e /opt/mailman/git/mailman-hyperkitty
     sudo pip install -e /opt/mailman/git/postorius
     
-If you need to install python3.4, go check [Building Python 3.4 from source](http://devmartin.com/blog/2016/04/creating-a-virtual-environment-with-python3.4-on-ubuntu-16.04-xenial-xerus/)
+-----------------
+
     
 Clone [Mailman Bundler](https://gitlab.com/mailman/mailman-bundler):
     
