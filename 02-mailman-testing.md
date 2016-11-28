@@ -17,6 +17,8 @@ Install python3.4, go check [Building Python 3.4 from source](http://devmartin.c
 
 ## Setting up for testing first
 
+
+passlib (1.6.5)
 !!!!!!!!!!!!
 
 Prepare an empty folder for mailman:
