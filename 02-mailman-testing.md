@@ -19,6 +19,7 @@ Install python3.4, go check [Building Python 3.4 from source](http://devmartin.c
 
 
 passlib (1.6.5)
+allowed_domain(127.0.0.1, IP, list.conferency.com)
 !!!!!!!!!!!!
 
 Prepare an empty folder for mailman:
