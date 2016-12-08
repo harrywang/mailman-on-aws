@@ -13,7 +13,7 @@ List of steps:
 
 5. [Put Mailman into Production](04-mailman-production.md)
 
-6. [Upgrade packages](05-nginx-proxy.md)
+6. [Upgrade packages](05-upgrading.md)
 
 7. [Use Nginx to proxy Mailman](06-nginx-proxy.md)
 
