@@ -521,6 +521,8 @@ SITE_ID = 1
 EMAIL_CONFIRMATION_FROM = an email address which can be verified by AWS
 ```
 
+The external login won't work, so please [follow this instruction to disable it](https://github.com/alex1007/mailman-on-aws/issues/8).
+
 Then give run permission to it.
 
     chmod 777 /opt/mailman/mailman-bundler/bin/gunicorn /opt/mailman/mailman-bundler/bin/mailman-web-django-admin 
