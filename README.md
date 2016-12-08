@@ -17,6 +17,8 @@ List of steps:
 
 7. [Use Nginx to proxy Mailman](06-nginx-proxy.md)
 
+8. [Custom](07-custom.md)
+
 References:
 * [Integrating Amazon SES with Postfix] (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
 * [Mailman bundler - GNU Mailman, Postorius and HyperKitty](https://gitlab.com/mailman/mailman-bundler)
