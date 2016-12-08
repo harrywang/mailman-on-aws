@@ -29,14 +29,14 @@ Install PostgreSQL library of python
 
 For a production setup, you first need to change the deployment parameter to production in buildout.cfg and run buildout again. It will regenerate the scripts in bin and the contents of the deployment directory. Run
 
-    nano mailman-bundler/buildout.cfg
+    vim mailman-bundler/buildout.cfg
     # Replace "deployment = testing" with "deployment = production"
     cd mailman-bundler
     buildout
     
 In the bundler directory, open the mailman_web/production.py file, look for the SECRET_KEY parameter and set something random.
 
-    nano mailman_web/production.py
+    vim mailman_web/production.py
     # set SECRET_KEY parameter to something random.
     # here, you may also want to do some modification. Check the things you will need to change here: https://docs.djangoproject.com/en/1.9/ref/settings/
     
@@ -46,7 +46,7 @@ In the bundler directory, open the mailman_web/production.py file, look for the 
 
 Run:
 
-    nano deployment/mailman.cfg 
+    vim deployment/mailman.cfg 
     
 Uncomment the following lines (delete the # character in the beginning):
     
@@ -197,6 +197,11 @@ Run:
 
     sudo su mailman
     cd mailman-bundler
+    
+    # Upgrade the database and cache
+    /opt/mailman/mailman-bundler/bin/mailman-web-django-admin makemigrations
+    /opt/mailman/mailman-bundler/bin/mailman-web-django-admin migrate
+    /opt/mailman/mailman-bundler/bin/mailman-web-django-admin collectstatic # press enter to continue
     ./bin/mailman-post-update
 
 ## Running web interface on Gunicorn
@@ -222,7 +227,7 @@ No img and css now -- it is normal.
 You need to run as root or use sudo. So go back to default user. Run:
     
     exit
-    sudo nano /etc/rc.local
+    sudo vim /etc/rc.local
 
 Add the following lines before exit 0:
 
