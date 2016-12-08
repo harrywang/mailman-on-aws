@@ -13,7 +13,9 @@ List of steps:
 
 5. [Put Mailman into Production](04-mailman-production.md)
 
-6. [Use Nginx to proxy Mailman](05-nginx-proxy.md)
+6. [Upgrade packages](05-nginx-proxy.md)
+
+7. [Use Nginx to proxy Mailman](06-nginx-proxy.md)
 
 References:
 * [Integrating Amazon SES with Postfix] (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html)
