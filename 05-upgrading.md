@@ -2,126 +2,37 @@
 
 Mailman-bundler is a convenient tool -- but some of the shipped components are out-of-date. We need to upgrade them.
 
-## Upgrade HyperKitty to git head version
-
 Stop all gunicorn process first.
   
     sudo killall gunicorn
-
-Then make sure you are using `mailman` user, by running `sudo su mailman`
-
-Go to `/opt/mailman` folder, and clone HyperKitty down.
+    
+Install Mailman, HyperKitty, Postorius, MailmanClient, HyperKitty - Mailman plugin, django-mailman3 separately.
 
     sudo su mailman
     cd /opt/mailman
-    git clone https://gitlab.com/mailman/hyperkitty/
+    mkdir git
+    cd git
+    git clone https://gitlab.com/alex1007/mailman.git
+    git clone https://gitlab.com/alex1007/hyperkitty.git
+    git clone https://gitlab.com/alex1007/postorius.git
+    git clone https://gitlab.com/alex1007/mailmanclient.git
+    git clone https://gitlab.com/alex1007/django-mailman3.git
+    git clone https://gitlab.com/alex1007/mailman-hyperkitty.git
     
-Navigate into hyperkitty folder, switch to python2 venv and install.
-  
-    cd hyperkitty
-    source ../venv/bin/activate
-    python setup.py install
+    pip install -e /opt/mailman/git/postorius
+    pip install -e /opt/mailman/git/hyperkitty
+    pip install -e /opt/mailman/git/mailmanclient
+    pip install -e /opt/mailman/git/django-mailman3
     
-
-## Upgrade Postorius
-
-Clone the repo and install.
-
-    cd /opt/mailman
-    git clone https://gitlab.com/mailman/postorius
-    cd postorius
-    source ../venv/bin/activate
-    python setup.py install
+    source mailman-bundler/venv-3.4/bin/activate
+    pip3 install --upgrade -e /opt/mailman/git/mailman-hyperkitty/
+    pip3 install --upgrade -e /opt/mailman/git/mailman/
+    pip3 install psycopg2
     
-## Upgrade mailmanclient (rest api of mailman)
+Check every file in folder `/opt/mailman/mailman-bundler/bin`.
 
-Clone the repo and install.
-
-    cd /opt/mailman
-    git clone https://gitlab.com/mailman/mailmanclient
-    cd mailmanclient
-    source ../venv/bin/activate
-    python setup.py install
-
-## Make the upgrade works
-    
-Replace the original gunicorn startup file.
-    
-    rm /opt/mailman/mailman-bundler/bin/gunicorn
-    nano  /opt/mailman/mailman-bundler/bin/gunicorn
-
-Paste the following file to it.
-
-    #!/opt/mailman/venv/bin/python
-
-    import sys
-    sys.path[0:0] = ['/opt/mailman/mailman-bundler',
-      '/opt/mailman/venv/lib/python2.7/site-packages',
-      '/opt/mailman/venv/local/lib/python2.7/site-packages/',
-      '/opt/mailman/venv/lib/python2.7/site-packages/',
-      '/opt/mailman/venv/lib/python2.7',
-      '/opt/mailman/venv/lib/python2.7/plat-x86_64-linux-gnu',
-      '/opt/mailman/venv/lib/python2.7/lib-tk',
-      '/opt/mailman/venv/lib/python2.7/lib-old',
-      '/opt/mailman/venv/lib/python2.7/lib-dynload',
-      '/opt/mailman/mailman-bundler/eggs',
-      '/opt/mailman/mailman-bundler/bin',
-      '/usr/lib/python2.7',
-      '/usr/lib/python2.7/plat-x86_64-linux-gnu',
-      '/usr/lib/python2.7/lib-tk']
-      
-    from os import listdir
-    from os.path import join as path_join
-    path = '/opt/mailman/mailman-bundler/eggs'
-    pathList = listdir(path)
-    for i, item in enumerate(pathList):
-        sys.path.append(path_join(path, item))
-      
-    import os
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'mailman_web.production'
-
-    import gunicorn.app.wsgiapp
-
-    if __name__ == '__main__':
-        sys.exit(gunicorn.app.wsgiapp.run())
-
-Update mailman-web-django-admin file
-
-    rm /opt/mailman/mailman-bundler/bin/mailman-web-django-admin
-    nano /opt/mailman/mailman-bundler/bin/mailman-web-django-admin
-    
-Paste it:
-
-    #!/opt/mailman/venv/bin/python
-
-    import sys
-    sys.path[0:0] = ['/opt/mailman/mailman-bundler',
-      '/opt/mailman/venv/lib/python2.7/site-packages',
-      '/opt/mailman/venv/local/lib/python2.7/site-packages/',
-      '/opt/mailman/venv/lib/python2.7/site-packages/',
-      '/opt/mailman/venv/lib/python2.7',
-      '/opt/mailman/venv/lib/python2.7/plat-x86_64-linux-gnu',
-      '/opt/mailman/venv/lib/python2.7/lib-tk',
-      '/opt/mailman/venv/lib/python2.7/lib-old',
-      '/opt/mailman/venv/lib/python2.7/lib-dynload',
-      '/opt/mailman/mailman-bundler/eggs',
-      '/opt/mailman/mailman-bundler/bin',
-      '/usr/lib/python2.7',
-      '/usr/lib/python2.7/plat-x86_64-linux-gnu',
-      '/usr/lib/python2.7/lib-tk']
-      
-    from os import listdir
-    from os.path import join as path_join
-    path = '/opt/mailman/mailman-bundler/eggs'
-    pathList = listdir(path)
-    for i, item in enumerate(pathList):
-        sys.path.append(path_join(path, item))
-    import djangorecipe.binscripts
-
-    if __name__ == '__main__':
-        sys.exit(djangorecipe.binscripts.manage('mailman_web.production'))
-
-
+add `'/opt/mailman/venv/lib/python2.7/site-packages'` into the sys.path[0:0] list if it's not in it.
+comment out `'/opt/mailman/mailman-bundler/eggs/Django-1.8.16-py2.7.egg`, `'/opt/mailman/mailman-bundler/eggs/postorius-1.0.3-py2.7.egg'`,`'/opt/mailman/mailman-bundler/eggs/HyperKitty-1.0.3-py2.7.egg'`,`'/opt/mailman/mailman-bundler/eggs/mailmanclient-1.0.1-py2.7.egg'`.
 
 Then give run permission to it.
 
