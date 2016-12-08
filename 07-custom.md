@@ -5,13 +5,17 @@ To replace default email templates, generate custom templates in /opt/mailman/ma
 
 list:member:generic:footer.txt
 
+```
 _______________________________________________
 $display_name mailing list
 $listname
 https://[DOMAIN]/mailman3/lists/$list_id/
 list:user:notice:welcome.txt
+```
 
+list:user:notice:welcome.txt
 
+```
 To post to this list, send your email to:
 
   $listname
@@ -26,10 +30,6 @@ page at:
 
   https://[DOMAIN]/mailman3/accounts/mailmansettings/
 
-You can also make such adjustments via email by sending a message to:
-
-  $request_email
-
-with the word 'help' in the subject or body (don't include the quotes), and
-you will get back a message with instructions.
+```
 Replace [DOMAIN] with your domain name.
+
